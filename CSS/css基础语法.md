@@ -1,6 +1,7 @@
 # CSS基础语法
+## 选择器  
 
-## 基础选择器
+### 基础选择器
 1. 标签选择器  
    直接使用 HTML 标签名（如 p、div、h1），匹配页面中所有该标签的元素。
    ```
@@ -52,7 +53,7 @@
    }
 
    ```
-## 组合选择器
+### 组合选择器
 1. 后代选择器（包含选择器）
    多个选择器用空格分隔（如 父选择器 后代选择器）。
    可以匹配 “父选择器” 包含的所有 “后代选择器” 元素（包括直接子元素和嵌套更深的元素）。
@@ -116,7 +117,7 @@
    }
 
    ```
-## 属性选择器（根据元素属性匹配）
+### 属性选择器（根据元素属性匹配）
 1. 基础属性选择器
    [属性名]{} 匹配所有包含该属性的元素。
    ```
@@ -174,14 +175,138 @@
    color: orange;
    }
    ```
-## 伪类选择器（根据元素状态 / 位置匹配）
+### 伪类选择器（根据元素状态 / 位置匹配）
 1. 状态伪类（元素交互状态）
+   :hover：鼠标悬停在元素上时。
+   ```
+   /* 鼠标悬停在a标签上时变色 */
+   a:hover {
+   color: red;
+   }
+   ```
+   :active：元素被点击（激活）时。
+   ```
+   /* 按钮被点击时背景变深 */
+   button:active {
+   background: #333;
+   }
+   ```
+   :focus：元素获得焦点时（常用于表单输入框）。
+   ```
+   /* 输入框获焦时显示蓝色边框 */
+   input:focus {
+   outline: none;
+   border-color: #0066cc;
+   }
+   ```
+   :visited：链接被访问后（仅用于 a 标签）。
+   ```
+   /* 已访问链接变灰色 */
+   a:visited {
+   color: #999;
+   }
+   ```
+   :link：链接未被访问时（仅用于 a 标签，需放在:visited 前）。
+   ```
+   a:link {
+   color: #0066cc;
+   }
+   ```
 2. 结构伪类（元素在 DOM 中的位置）
-3. 其他常用伪类
-## 伪元素选择器（创建虚拟元素）
-
-
-
+   :first-child：匹配父元素的第一个子元素。
+   ```
+   /* ul的第一个li元素加粗 */
+   ul li:first-child {
+   font-weight: bold;
+   }
+   ```
+   :last-child：匹配父元素的最后一个子元素。
+   ```
+   /* 列表最后一个li元素添加下外边距 */
+   ul li:last-child {
+   margin-bottom: 20px;
+   }
+   ```
+   :nth-child(n)：匹配父元素的第 n 个子元素（n 可为数字、公式或关键词）。
+   ```
+   /* 匹配第2个li元素 */
+   ul li:nth-child(2) {
+   color: red;
+   }
+   /* 匹配偶数位置的li（2、4、6...） */
+   ul li:nth-child(even) {
+   background: #f5f5f5;
+   }
+   /* 匹配奇数位置的li（1、3、5...） */
+   ul li:nth-child(odd) {
+   background: #fff;
+   }
+   ```
+   :only-child：匹配父元素中唯一的子元素。
+   ```
+   /* 若div中只有一个p元素，则设置字体大小 */
+   div p:only-child {
+   font-size: 16px;
+   }
+   ```
+5. 其他常用伪类
+   :empty：匹配没有任何子元素（包括文本） 的元素。
+   ```
+   /* 空div显示灰色背景 */
+   div:empty {
+   background: #eee;
+   height: 20px;
+   }
+   ```
+   :checked：匹配被选中的表单元素（如单选框、复选框）。
+   ```
+   /* 选中的复选框后文字加粗 */
+   input:checked + span {
+   font-weight: bold;
+   }
+   ```
+   :not(选择器)：否定伪类，匹配不满足指定选择器的元素（反向匹配）。
+   ```
+   /* 所有不是.active类的li元素设为灰色 */
+   li:not(.active) {
+   color: #999;
+   }
+   ```
+### 伪元素选择器（创建虚拟元素）
+用于在元素的特定位置插入 “虚拟元素”（不属于 DOM，仅用于样式），语法以 :: 开头（CSS3 规范，旧版可用单冒号，最好用双冒号）。
+   - ::before 在元素内容的前面插入虚拟元素，需配合 content 属性使用。
+   ```
+   /* 在p标签内容前添加一个箭头 */
+   p::before {
+     content: "→";  /* 必须设置content，可空（content: ""） */
+     color: red;
+     margin-right: 5px;
+   }
+   ```
+   - ::after 在元素内容的后面插入虚拟元素，需配合 content 属性使用。
+   ```
+   /* 在链接后面添加一个小图标（或文字） */
+   a.external::after {
+     content: "(外部链接)";
+     font-size: 12px;
+     color: #999;
+   }
+   ```
+   - ::first-letter 匹配元素第一个字符（仅用于块级元素）。
+   ```
+   /* 段落首字放大 */
+   p::first-letter {
+     font-size: 2em;
+     color: red;
+   }
+   ```
+   - ::first-line 匹配元素第一行文字（仅用于块级元素，受容器宽度影响）。
+   ```
+   /* 段落第一行文字加粗 */
+   p::first-line {
+     font-weight: bold;
+   }
+   ```
 
 
 
