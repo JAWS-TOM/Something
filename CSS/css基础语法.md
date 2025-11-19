@@ -308,6 +308,48 @@
    }
    ```
 
+## 常用 CSS 属性
+1. 文本样式
+   color：文字颜色（值可以是颜色名、十六进制 #ff0000、RGB rgb(255,0,0) 等）。  
+   font-size：字体大小（如 16px、1.2rem）。  
+   font-family：字体（如 font-family: "Microsoft YaHei", sans-serif;）。  
+   text-align：文本对齐（left/center/right）。  
+   line-height：行高（可设置为数值或倍数，如 1.5 表示 1.5 倍字体大小）。  
+ 
+2. 盒模型（控制元素布局）   
+每个 HTML 元素都可视为一个 “盒子”，由以下部分组成：  
+   width/height：内容区域的宽高。  
+   padding：内容与边框的内边距（如 padding: 10px 20px; 表示上下 10px、左右 20px）。  
+   border：边框（如 border: 1px solid #ccc; 表示 1px 宽、实线、灰色边框）。  
+   margin：元素与其他元素的外边距（用法同 padding）。
+   ```
+   .box {
+   width: 200px;
+   height: 100px;
+   padding: 15px;
+   border: 2px solid blue;
+   margin: 10px;
+   }
+   ```
+3. 背景样式  
+   - background-color：背景颜色。  
+   - background-image：背景图片（如 background-image: url("bg.jpg");）。  
+   - background-repeat：背景图是否重复（no-repeat/repeat-x 等）。  
+4. 布局相关  
+   - display：元素显示模式（block 块级元素 /inline 行内元素 /flex 弹性布局等）。  
+       块级元素（如 div、p）默认占满一行，可设置宽高。  
+       行内元素（如 span、a）默认在一行排列，不可设置宽高。  
+   - float：浮动（left/right，使元素脱离文档流，常用于早期布局）。  
+   - position：定位（relative 相对定位 /absolute 绝对定位 /fixed 固定定位，用于精确控制元素位置）。
+   
+### 层叠与优先级  
+当多个 CSS 规则作用于同一元素时，优先级决定最终生效的样式：  
+   1. !important：优先级最高（如 color: red !important;，谨慎使用）。
+   2. 内联样式（style 属性）。
+   3. ID 选择器（#id）。
+   4. 类选择器（.class）、属性选择器、伪类。
+   5. 标签选择器（div、p）。
+   6. 通配符选择器（*）。  
 
 
 
